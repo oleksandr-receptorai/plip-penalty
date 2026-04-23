@@ -1,4 +1,5 @@
 import itertools
+import numbers
 import os
 import re
 import tempfile
@@ -2176,7 +2177,7 @@ class PLPenalties:
                 self.burried_unpaired_hbda_sc_idxs.add(burr_unp_hbda)
         
         # Now we compute res versions of penalties
-        atoms_idx_to_res_fn = lambda x: {self.map_lig_orig_idx_to_res_title(self.pli_inter, idx) if isinstance(idx, int) 
+        atoms_idx_to_res_fn = lambda x: {self.map_lig_orig_idx_to_res_title(self.pli_inter, idx) if isinstance(idx, numbers.Integral)
                                          else self.map_lig_orig_idx_to_res_title(self.pli_inter, next(iter(idx))) for idx in x}
 
         self.burried_unpaired_hbda_reses = atoms_idx_to_res_fn(self.burried_unpaired_hbda_idxs)
